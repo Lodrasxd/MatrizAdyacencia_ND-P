@@ -174,7 +174,7 @@ namespace MatrizAdyacencia_ND_P
         public void RemoveNodo(char src)
         {
             int s = ObtenerIndice(src);
-            if (s < 0 || s >= nodos.Count)
+            if (s == -1)
             {
                 Console.WriteLine("Índice inválido");
                 return;
