@@ -17,7 +17,7 @@ namespace MatrizAdyacencia_ND_P
             char a, b;
             while (ciclo == true)
             {
-                Console.WriteLine("1.-Añadir vertice \n2.-Añadir arista\n3.-Eliminar arista\n4.-Imprimir matriz de adyacencia\n5.-Realizar busqueda por amplitud (BFS)\n6.-Reealizar Busqueda en profundidad (DFS)\n7.-Salir");
+                Console.WriteLine("1.-Añadir vertice \n2.-Añadir arista\n3.-Eliminar arista\n4.-Eliminar vertice\n5.-Imprimir matriz de adyacencia\n6.-Realizar busqueda por amplitud (BFS)\n7.-Reealizar Busqueda en profundidad (DFS)\n8.-Salir");
                 opcion = int.Parse(Console.ReadLine());
                 switch (opcion)
                 {
@@ -35,7 +35,7 @@ namespace MatrizAdyacencia_ND_P
                         b = Console.ReadKey().KeyChar;
                         Console.WriteLine("\nEscribe el peso a asignar al arista");
                         peso = int.Parse(Console.ReadLine());
-                        grafo.AddArista(a, b, peso);
+                        grafo.AddArista(a, b,peso);
 
                         Console.ReadKey();
                         Console.Clear();
@@ -51,24 +51,33 @@ namespace MatrizAdyacencia_ND_P
                         Console.Clear();
                         break;
                     case 4:
+                        Console.WriteLine();
+                        Console.WriteLine("Escribe el caracter asignado del vertice a eliminar");
+                        a = Console.ReadKey().KeyChar;
+
+                        grafo.RemoveNodo(a);
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+                    case 5:
                         Console.WriteLine("Matriz de Adyacencia:\n");
                         grafo.Print();
                         Console.ReadKey();
                         Console.Clear();
                         break;
-                    case 5:
+                    case 6:
                         Console.WriteLine("Escribe el caracter asignado del vertice de inicio");
                         grafo.BFS(Console.ReadKey().KeyChar);
                         Console.ReadKey();
                         Console.Clear();
                         break;
-                    case 6:
+                    case 7:
                         Console.WriteLine("Escribe el caracter asignado del vertice de inicio");
                         grafo.DFS(Console.ReadKey().KeyChar);
                         Console.ReadKey();
                         Console.Clear();
                         break;
-                    case 7:
+                    case 8:
                         ciclo = false;
                         Console.WriteLine("Saliendo...");
                         Console.ReadKey();

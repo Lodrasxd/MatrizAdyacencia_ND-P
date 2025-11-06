@@ -171,16 +171,17 @@ namespace MatrizAdyacencia_ND_P
             if (!dirigido) matriz[j, i] = 0;
             Console.WriteLine("Arista eliminada");
         }
-        public void RemoveNodo(int index)
+        public void RemoveNodo(char src)
         {
-            if (index < 0 || index >= nodos.Count)
+            int s = ObtenerIndice(src);
+            if (s < 0 || s >= nodos.Count)
             {
                 Console.WriteLine("Índice inválido");
                 return;
             }
 
             // Eliminar el nodo de la lista
-            nodos.RemoveAt(index);
+            nodos.RemoveAt(s);
 
             int size = matriz.GetLength(0);
             int[,] nuevaMatriz = new int[size - 1, size - 1];
@@ -189,11 +190,11 @@ namespace MatrizAdyacencia_ND_P
             int filaNueva = 0;
             for (int i = 0; i < size; i++)
             {
-                if (i == index) continue; // saltar la fila eliminada
+                if (i == s) continue; // saltar la fila eliminada
                 int colNueva = 0;
                 for (int j = 0; j < size; j++)
                 {
-                    if (j == index) continue; // saltar la columna eliminada
+                    if (j == s) continue; // saltar la columna eliminada
                     nuevaMatriz[filaNueva, colNueva] = matriz[i, j];
                     colNueva++;
                 }
